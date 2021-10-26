@@ -13,6 +13,7 @@ import com.javatechie.azure.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,6 +22,7 @@ import java.util.Optional;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
+@Controller
 @RequestMapping(path="/")
 public class StoryController {
 	@Autowired
@@ -164,7 +166,7 @@ public class StoryController {
 		}
 		return ResponseEntity
 				.badRequest()
-				.body(new MessageResponse("Error: User cannot be found"));
+				.body(new MessageResponse("error: User cannot be found"));
 	}
 
 }
