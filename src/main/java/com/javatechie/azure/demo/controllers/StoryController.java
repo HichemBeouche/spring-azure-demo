@@ -23,6 +23,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping(path="/")
 public class StoryController {
+
 	@Autowired
 	private StoryRepository storyRepository;
 
@@ -100,6 +101,7 @@ public class StoryController {
 	@PostMapping("story/{id_user}/create")
 	public ResponseEntity<?> createStory(@PathVariable Long id_user, @RequestBody Story story) {
 		try {
+			System.out.println(story.getTitle() + " " + story.getTitle() + " " + id_user);
 			Story newStory = Story.create(story.getTitle(), story.getDesc(), id_user);
 			Story s = storyRepository.save(newStory);
 			return new ResponseEntity<Story>(s, HttpStatus.OK);
