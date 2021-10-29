@@ -2,13 +2,13 @@ package com.javatechie.azure.demo.repository;
 
 import com.javatechie.azure.demo.models.Story;
 import org.springframework.data.jdbc.repository.query.Query;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 @Repository
-public interface StoryRepository extends CrudRepository<Story, Integer> {
+public interface StoryRepository extends JpaRepository<Story, Integer> {
 	
 	@Query("Select s.* from Story s where s.id_story in (select id_story from Story_User where id_user = :idUser and permission='A')")
 	List<Story> findAllForUser(@Param("idUser") Long idUser);
