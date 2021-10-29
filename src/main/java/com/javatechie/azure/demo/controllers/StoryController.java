@@ -101,9 +101,11 @@ public class StoryController {
 	@PostMapping("story/{id_user}/create")
 	public ResponseEntity<?> createStory(@PathVariable Long id_user, @RequestBody Story story) {
 		try {
-			System.out.println(story.getTitle() + " " + story.getTitle() + " " + id_user);
+			System.out.println("Je suis ligne 104");
 			Story newStory = Story.create(story.getTitle(), story.getDesc(), id_user);
+			System.out.println("Je suis ligne 106");
 			Story s = storyRepository.save(newStory);
+			System.out.println("Je suis ligne 108");
 			return new ResponseEntity<Story>(s, HttpStatus.OK);
 		} catch (IllegalArgumentException e) {
 			return ResponseEntity.badRequest().body(new MessageResponse(e.getMessage()));
